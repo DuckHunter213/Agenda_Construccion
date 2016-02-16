@@ -1,4 +1,4 @@
-package agenda;
+package Proyecto;
 
 import java.awt.Image;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package agenda;
+package Proyecto;
 
 public class Main {
 
