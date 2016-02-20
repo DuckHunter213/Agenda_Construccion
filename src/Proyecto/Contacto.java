@@ -4,11 +4,11 @@ import java.awt.Image;
 import java.util.ArrayList;
 
 public class Contacto {
-     private String nombre;
-        private String apellido;
-        private ArrayList <String> telefono;
-        private ArrayList <String> redSocial;
-        private String web;
+    private String nombre;
+    private String apellido;
+    private ArrayList <String> telefono;
+    private ArrayList <String> redSocial;
+    private String web;
         private Image foto;
         
         Contacto(String nombre, String apellido, ArrayList telefono, ArrayList redSocial, String web, Image foto){
@@ -19,6 +19,10 @@ public class Contacto {
             this.web=web;
             this.foto=foto;
         }
+
+    Contacto(String nombre, String apellidos, String telefono, String redSocial, String paginaWeb) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
         public String getNombre(){return nombre;}
         public String getApellido(){return apellido;}
         public ArrayList getTelefono(){return telefono;}
