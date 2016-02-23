@@ -17,6 +17,13 @@ public class Contacto {
             this.paginaWeb=paginaWeb;
             this.foto=foto;
         }
+    Contacto(String nombre, String apellidos, ArrayList telefono, ArrayList redSocial, String paginaWeb){
+            this.nombre=nombre;
+            this.apellidos=apellidos;
+            this.telefono=telefono;
+            this.redSocial=redSocial;
+            this.paginaWeb=paginaWeb;
+        }
     
     public String getNombre() {return nombre;}
     public String getApellido() {return apellidos;}
