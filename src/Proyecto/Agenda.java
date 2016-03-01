@@ -33,4 +33,8 @@ public class Agenda {
                 .collect(Collectors.toList()).get(0);
         return contactoEncontrado;
     }
+    public boolean eliminarContacto(Contacto contacto){
+        boolean estadoEliminar = listaDeContactos.remove(contacto);
+        return estadoEliminar;
+    }
 }
