@@ -27,7 +27,6 @@ public class MenuPrincipal {
         System.out.println("Identificador:");
         int identificador = teclado.nextInt();
         temporal.setIdentificador(identificador);
-        teclado.nextLine();
         System.out.println("Nombre:");
         temporal.setNombre(teclado.nextLine());
         System.out.println("Apellido:");
@@ -46,11 +45,13 @@ public class MenuPrincipal {
         return temporal;
     }
         
-    public static void imprimirMenuEnPantalla(){
+    public static void imprimirMenuAcciones(){
         System.out.println("Bienvendido a la agenda");
         System.out.println("Opcion 1: Agregar un contacto");
         System.out.println("Opcion 2: Buscar numero y ver datos del Contacto");
         System.out.println("Opcion 9: Salir");
+        
+            
     }
     
     public static void imprimirContactoEnPantalla(Contacto contacto){
@@ -62,31 +63,36 @@ public class MenuPrincipal {
     }
         
     public static void main(String[] args) {
-        Scanner teclado = new Scanner(System.in);
-        int identificador=0;
-        int menu=0;
-        Agenda agendaDeLuis = new Agenda();
-                
-        while(menu!=-1){
-            imprimirMenuEnPantalla();
-            switch(menu){
+        Scanner leerTeclado = new Scanner(System.in);
+        int menu=0,identificador=0;
+        Agenda agendaDeLuis = new Agenda();        
+        
+        while(menu==0){
+            imprimirMenuAcciones();
+            menu = leerTeclado.nextInt();            
+            switch (menu){
             case 1:
                 agendaDeLuis.agregarContacto(capturarDatosDelContacto());
+                menu=0;
                 break;
             case 2:
                 Contacto contactoTemporal;
                 System.out.println("Buscar el contacto por e identificador:");
-                identificador = teclado.nextInt();
+                identificador = leerTeclado.nextInt();
                 contactoTemporal = (Contacto) agendaDeLuis.buscaContactosPorIdentificador(identificador);
-                teclado.nextLine();
+                leerTeclado.nextLine();
                 imprimirContactoEnPantalla(contactoTemporal);
+                menu=0;
                 break;
             case 9:
                 menu=-1;
                 break;
             default:
                 System.out.println("Verificar opción valida");
+                menu=0;                
             }
         }
+        
+        
     }
 }
