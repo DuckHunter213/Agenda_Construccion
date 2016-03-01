@@ -62,6 +62,7 @@ public class MenuPrincipal {
     }
         
     public static void main(String[] args) {
+        //Agrrgar una cosntante
         Scanner teclado = new Scanner(System.in);
         int identificador=0;
         int menu=0;
@@ -69,6 +70,8 @@ public class MenuPrincipal {
                 
         while(menu!=-1){
             imprimirMenuEnPantalla();
+            menu = teclado.nextInt();
+            teclado.nextLine();
             switch(menu){
             case 1:
                 agendaDeLuis.agregarContacto(capturarDatosDelContacto());
