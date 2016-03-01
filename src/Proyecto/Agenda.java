@@ -24,13 +24,13 @@ public class Agenda {
                 .collect(Collectors.toList());
         return contactosEncontrados;
     }
-    public List<Contacto> buscaContactosPorIdentificador(int identificador){
-        List<Contacto> contactosEncontrados = null;
+    public Contacto buscaContactosPorIdentificador(int identificador){
+        Contacto contactoEncontrado = null;
         //Busca Contacto(s) con las funciones lambda por entero
-        contactosEncontrados=this.listaDeContactos
+        contactoEncontrado=(Contacto) this.listaDeContactos
                 .stream()
                 .filter(contacto->contacto.getIdentificador()==identificador)
-                .collect(Collectors.toList());
-        return contactosEncontrados;
+                .collect(Collectors.toList()).get(0);
+        return contactoEncontrado;
     }
 }
