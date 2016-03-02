@@ -15,6 +15,7 @@ public class Agenda {
     public void agregarContacto(Contacto contacto){
         this.listaDeContactos.add(contacto);
     }
+    
     public List<Contacto> buscaContactosPorNombre(String nombre){
         List<Contacto> contactosEncontrados = null;
         //Busca Contacto(s) con las funciones lambda por nombre
@@ -24,6 +25,7 @@ public class Agenda {
                 .collect(Collectors.toList());
         return contactosEncontrados;
     }
+    
     public Contacto buscaContactosPorIdentificador(int identificador){
         Contacto contactoEncontrado = null;
         //Busca Contacto(s) con las funciones lambda por entero
