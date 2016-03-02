@@ -9,7 +9,19 @@ public class Contacto{
     private ArrayList <String> redesSociales;
     private ArrayList <String> correosElectronicos;
     private String paginaWeb;
-    
+
+    public Contacto(int identificador, String nombre, String apellido, ArrayList<String> telefonos, ArrayList<String> redesSociales, ArrayList<String> correosElectronicos, String paginaWeb) {
+        this.identificador = identificador;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefonos = telefonos;
+        this.redesSociales = redesSociales;
+        this.correosElectronicos = correosElectronicos;
+        this.paginaWeb = paginaWeb;
+    }    
+
+    public Contacto() {
+    }
     public String getNombre() {
         return nombre;
     }
