@@ -57,6 +57,20 @@ public class AgendaTest {
     }
     
     @Test
+    public void testEliminarContacto() {
+        ArrayList <String> telefonos = new ArrayList<>();
+        ArrayList <String> redesSociales = new ArrayList<>();
+        ArrayList <String> correosElectronicos = new ArrayList<>();
+        telefonos.add("2282191122");
+        redesSociales.add("/gerardo0579");
+        correosElectronicos.add("gerardo0579@hotmail.com");
+        Contacto contacto = new Contacto(1234,"Cho","Gómez", telefonos, null, null,"pagina@web");
+        Agenda agenda = new Agenda();
+        boolean resultadoEsperado = true;
+        agenda.agregarContacto(contacto);
+        assertEquals("Prueba buscar contacto por nombre", resultadoEsperado, agenda.eliminarContacto(contacto) );
+    }
+    @Test
     public void testBuscaContactosPorNombre() {
         Agenda agenda = new Agenda();
         Contacto contacto = new Contacto();
