@@ -50,8 +50,10 @@ public class MenuPrincipal {
     public static void imprimirMenuAcciones(){
         System.out.println("Bienvendido a la agenda");
         System.out.println("Opcion 1: Agregar un contacto");
-        System.out.println("Opcion 2: Buscar numero y ver datos del Contacto");
-        System.out.println("Opcion 3: Eliminar contacto por su identificador");
+        System.out.println("Opcion 2: Eliminar contacto por su identificador");
+        System.out.println("Opcion 3: Buscar identificador y ver datos del Contacto");
+        System.out.println("Opcion 4: Buscar nombre y ver datos del Contacto");
+        System.out.println("Opcion 5: Buscar correo y ver datos del Contacto");
         System.out.println("Opcion 9: Salir");
     }
     
@@ -67,32 +69,60 @@ public class MenuPrincipal {
     public static void main(String[] args) {
         Scanner leerTeclado = new Scanner(System.in);
         int menu=0,identificador=0;
+        String datoParaBuscar="";
         Agenda agenda = new Agenda();
-        Contacto contactoTemporal;
+        ArrayList<Contacto> contactoTemporal = new ArrayList<>();
+        Contacto nuevoContacto;
+        agenda.agregarUsuarioPrueba();
         
         while(menu!=SALIDA_MENU){
             imprimirMenuAcciones();
             menu = leerTeclado.nextInt();            
             switch (menu){
             case 1:
-                contactoTemporal = capturarDatosDelContacto();
-                agenda.agregarContacto(contactoTemporal);
-                menu=0;
-                break;
-            case 2:
-                System.out.println("Buscar el contacto por identificador:");
-                identificador = leerTeclado.nextInt();
-                leerTeclado.nextLine();
-                contactoTemporal = (Contacto) agenda.buscaContactosPorIdentificador(identificador);
-                imprimirContactoEnPantalla(contactoTemporal);
+                nuevoContacto = capturarDatosDelContacto();
+                agenda.agregarContacto(nuevoContacto);
                 menu=0;
                 break;
             case 3:
+                System.out.println("Buscar el contacto por identificador:");
+                identificador = leerTeclado.nextInt();
+                leerTeclado.nextLine();
+                contactoTemporal.add((Contacto) agenda.buscaContactosPorIdentificador(identificador));
+                for(Contacto contacto : contactoTemporal){
+                    imprimirContactoEnPantalla(contacto);                    
+                }
+                contactoTemporal.removeAll(contactoTemporal);
+                menu=0;
+                break;
+            case 4:
+                System.out.println("Buscar el contacto por nombre:");
+                datoParaBuscar = leerTeclado.next();
+                leerTeclado.nextLine();
+                contactoTemporal = (ArrayList) agenda.buscaContactosPorNombre(datoParaBuscar);
+                for(Contacto contacto : contactoTemporal){
+                    imprimirContactoEnPantalla(contacto);                    
+                }
+                contactoTemporal.removeAll(contactoTemporal);
+                menu=0;
+                break;
+            case 5:
+                System.out.println("Buscar el contacto por correo:");
+                datoParaBuscar = leerTeclado.next();
+                leerTeclado.nextLine();
+                contactoTemporal = (ArrayList) agenda.buscaContactosPorCorreo(datoParaBuscar);
+                for(Contacto contacto : contactoTemporal){
+                    imprimirContactoEnPantalla(contacto);                    
+                }
+                contactoTemporal.removeAll(contactoTemporal);
+                menu=0;
+                break;
+            case 2:
                 System.out.println("Eliminar el contacto por identificador:");
                 identificador = leerTeclado.nextInt();
                 leerTeclado.nextLine();
-                contactoTemporal = (Contacto) agenda.buscaContactosPorIdentificador(identificador);
-                agenda.eliminarContacto(contactoTemporal);
+                nuevoContacto = (Contacto) agenda.buscaContactosPorIdentificador(identificador);
+                agenda.eliminarContacto(nuevoContacto);
                 menu=0;
                 break;
             case 9:

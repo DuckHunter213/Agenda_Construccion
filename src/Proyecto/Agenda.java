@@ -3,6 +3,7 @@ package Proyecto;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Agenda {
@@ -13,17 +14,30 @@ public class Agenda {
     }
     
     public boolean agregarContacto(Contacto contacto){
-        boolean estadoEliminar = this.listaDeContactos.add(contacto);
-        return estadoEliminar;
+        boolean estadoAgregar = this.listaDeContactos.add(contacto);
+        return estadoAgregar;
+    }
+    
+    private Predicate<Contacto> filtraContacto(String criterioBusqueda, TipoBusqueda tipo){
+        Predicate<Contacto> predicadoFiltrado=null;
+        if(tipo==TipoBusqueda.porNombre){
+            predicadoFiltrado=contacto->contacto.getNombre().contains(criterioBusqueda);
+        }else if(tipo==TipoBusqueda.porCorreo){
+            predicadoFiltrado=contacto->contacto.getCorreosElectronicos().contains(criterioBusqueda);
+        }
+        return predicadoFiltrado;
+    }
+    private List<Contacto> buscaContacto(String criterioBusqueda, TipoBusqueda tipo){
+        return this.listaDeContactos
+                .stream()
+                .filter(filtraContacto(criterioBusqueda, tipo))
+                .collect(Collectors.toList());
     }
     public List<Contacto> buscaContactosPorNombre(String nombre){
-        List<Contacto> contactosEncontrados = null;
-        //Busca Contacto(s) con las funciones lambda por nombre
-        contactosEncontrados=this.listaDeContactos
-                .stream()
-                .filter(contacto->contacto.getNombre().equals(nombre))
-                .collect(Collectors.toList());
-        return contactosEncontrados;
+        return this.buscaContacto(nombre, TipoBusqueda.porNombre);
+    }
+    public List<Contacto> buscaContactosPorCorreo(String correo){
+        return this.buscaContacto(correo, TipoBusqueda.porCorreo);
     }
     public Contacto buscaContactosPorIdentificador(int identificador){
         Contacto contactoEncontrado = null;
@@ -55,6 +69,6 @@ public class Agenda {
         correosElectronicos.add("gerardo0579@hotmail.com");
         contactoTemporal.setCorreosElectronicos(correosElectronicos);
         contactoTemporal.setPaginaWeb("www.eso.com");
-        contactoTemporal.setIdentificador(2345);
+        contactoTemporal.setIdentificador(2345);        
     }
 }

@@ -55,6 +55,20 @@ public class AgendaTest {
         boolean resultadoEsperado = true;
         assertEquals("Prueba agregar contacto", resultadoEsperado, agenda.agregarContacto(contacto) );
     }
+    @Test
+    public void testAgregarContactoFallido() {
+        ArrayList <String> telefonos = new ArrayList<>();
+        ArrayList <String> redesSociales = new ArrayList<>();
+        ArrayList <String> correosElectronicos = new ArrayList<>();
+        telefonos.add("2282191122");
+        redesSociales.add("/gerardo0579");
+        correosElectronicos.add("gerardo0579@hotmail.com");
+        Contacto contacto = new Contacto(1234,"Cho","Gómez", telefonos, null, null,"pagina@web");
+        Agenda agenda = new Agenda();
+        boolean resultadoEsperado = false;
+        agenda.agregarContacto(contacto);
+        assertEquals("Prueba agregar contacto", resultadoEsperado, agenda.agregarContacto(contacto) );
+    }
     
     @Test
     public void testEliminarContacto() {
