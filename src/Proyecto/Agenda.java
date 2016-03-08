@@ -53,7 +53,7 @@ public class Agenda {
         return estadoEliminar;
     }
     
-    public void agregarUsuarioPrueba(){
+    public Contacto agregarUsuarioPrueba(){
         ArrayList <String> telefonos,redesSociales,correosElectronicos;
         telefonos = new ArrayList<String>();
         redesSociales = new ArrayList<String>();
@@ -69,6 +69,7 @@ public class Agenda {
         correosElectronicos.add("gerardo0579@hotmail.com");
         contactoTemporal.setCorreosElectronicos(correosElectronicos);
         contactoTemporal.setPaginaWeb("www.eso.com");
-        contactoTemporal.setIdentificador(2345);        
+        contactoTemporal.setIdentificador(2345);
+        return contactoTemporal;
     }
 }

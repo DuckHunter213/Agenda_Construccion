@@ -88,10 +88,8 @@ public class MenuPrincipal {
                 System.out.println("Buscar el contacto por identificador:");
                 identificador = leerTeclado.nextInt();
                 leerTeclado.nextLine();
-                contactoTemporal.add((Contacto) agenda.buscaContactosPorIdentificador(identificador));
-                for(Contacto contacto : contactoTemporal){
-                    imprimirContactoEnPantalla(contacto);                    
-                }
+                nuevoContacto = (Contacto) agenda.buscaContactosPorIdentificador(identificador);
+                imprimirContactoEnPantalla(nuevoContacto);
                 contactoTemporal.removeAll(contactoTemporal);
                 menu=0;
                 break;

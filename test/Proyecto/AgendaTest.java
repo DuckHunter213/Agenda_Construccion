@@ -55,20 +55,6 @@ public class AgendaTest {
         boolean resultadoEsperado = true;
         assertEquals("Prueba agregar contacto", resultadoEsperado, agenda.agregarContacto(contacto) );
     }
-    @Test
-    public void testAgregarContactoFallido() {
-        ArrayList <String> telefonos = new ArrayList<>();
-        ArrayList <String> redesSociales = new ArrayList<>();
-        ArrayList <String> correosElectronicos = new ArrayList<>();
-        telefonos.add("2282191122");
-        redesSociales.add("/gerardo0579");
-        correosElectronicos.add("gerardo0579@hotmail.com");
-        Contacto contacto = new Contacto(1234,"Cho","Gómez", telefonos, null, null,"pagina@web");
-        Agenda agenda = new Agenda();
-        boolean resultadoEsperado = false;
-        agenda.agregarContacto(contacto);
-        assertEquals("Prueba agregar contacto", resultadoEsperado, agenda.agregarContacto(contacto) );
-    }
     
     @Test
     public void testEliminarContacto() {
@@ -87,11 +73,22 @@ public class AgendaTest {
     @Test
     public void testBuscaContactosPorNombre() {
         Agenda agenda = new Agenda();
-        Contacto contacto = new Contacto();
         agenda.agregarUsuarioPrueba();
-        List<Contacto> resultadoEsperado = new ArrayList<>();
+        ArrayList<Contacto> resultadoEsperado = new ArrayList<>();
         assertEquals("Prueba buscar contacto por nombre", resultadoEsperado, agenda.buscaContactosPorNombre("Xalaquia") );
     }
-    
-    
+    @Test
+    public void testBuscaContactosPorCorreo() {
+        Agenda agenda = new Agenda();
+        agenda.agregarUsuarioPrueba();
+        ArrayList<Contacto> resultadoEsperado = new ArrayList<>();
+        assertEquals("Prueba buscar contacto por nombre", resultadoEsperado, agenda.buscaContactosPorCorreo("gerardo0579@hotmail.com") );
+    }    
+    @Test
+    public void testBuscaContactosPorIdentificador() {
+        Agenda agenda = new Agenda();
+        agenda.agregarUsuarioPrueba();
+        Contacto resultadoEsperado = new Contacto();
+        assertEquals("Prueba buscar contacto por nombre", resultadoEsperado, (Contacto) agenda.buscaContactosPorIdentificador(2345) );
+    }
 }
