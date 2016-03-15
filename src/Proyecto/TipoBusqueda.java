@@ -10,5 +10,6 @@ package Proyecto;
  * @author Gerardo
  */
 public enum TipoBusqueda {
-    porNombre,porCorreo;
+
+    porNombre, porCorreo;
 }
